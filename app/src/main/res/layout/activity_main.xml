@@ -8,6 +8,27 @@
     android:background="@color/white"
     tools:context=".MainActivity">
 
+    <FrameLayout
+        android:id="@+id/frameLayout"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:background="@color/black"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:fontFamily="@font/alegreya"
+            android:gravity="center"
+            android:text="Stock Price"
+            android:textColor="@color/white"
+            android:textSize="30sp" />
+    </FrameLayout>
+
     <androidx.cardview.widget.CardView
         android:id="@+id/cardView"
         android:layout_width="match_parent"
@@ -19,30 +40,87 @@
         app:cardCornerRadius="30dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toBottomOf="@+id/frameLayout">
 
         <SearchView
+            android:id="@+id/searchBar"
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+            android:layout_height="match_parent"
+            android:focusable="true"
+            android:searchIcon="@drawable/baseline_search_24"
+            android:focusableInTouchMode="true"
+            android:clickable="true"
+            android:iconifiedByDefault="false"
+            android:minHeight="56dp" />
     </androidx.cardview.widget.CardView>
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:layout_width="match_parent"
+    <Button
+        android:id="@+id/searchButton"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="30dp"
+        android:backgroundTint="@color/black"
+        android:elevation="10dp"
+        android:fontFamily="@font/akaya_telivigala"
+        android:paddingLeft="40dp"
+        android:paddingTop="20dp"
+        android:paddingRight="40dp"
+        android:text="Search"
+        android:textSize="25dp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView"
-        tools:listitem="@layout/recent_item" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cardView" />
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/percentChange"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/akaya_telivigala"
+        android:text="Percentage Change"
+        android:visibility="invisible"
+        android:textColor="@color/black"
+        android:textSize="28sp"
+        app:layout_constraintStart_toStartOf="@+id/currentPrice"
+        app:layout_constraintTop_toBottomOf="@+id/currentPrice" />
+
+    <TextView
+        android:id="@+id/currentPrice"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/akaya_telivigala"
+        android:text="Current Price"
+        android:visibility="invisible"
+        android:textColor="@color/black"
+        android:textSize="28sp"
+        app:layout_constraintStart_toStartOf="@+id/stockSymbol"
+        app:layout_constraintTop_toBottomOf="@+id/stockSymbol" />
+
+    <TextView
+        android:id="@+id/stockName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="30dp"
         android:fontFamily="@font/akaya_telivigala"
-        android:text="Recent Searches"
+        android:text="Stock Symbol"
+        android:textColor="@color/black"
         android:textSize="28sp"
+        android:visibility="invisible"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/cardView" />
+        app:layout_constraintTop_toBottomOf="@+id/searchButton" />
+
+    <TextView
+        android:id="@+id/stockSymbol"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="invisible"
+        android:fontFamily="@font/akaya_telivigala"
+        android:text="Stock Name"
+        android:textColor="@color/black"
+        android:textSize="28sp"
+        app:layout_constraintStart_toStartOf="@+id/stockName"
+        app:layout_constraintTop_toBottomOf="@+id/stockName" />
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>
