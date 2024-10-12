@@ -25,7 +25,8 @@ class MainActivity : AppCompatActivity() {
         apiKey = getString(R.string.API_KEY)
         val searchView = findViewById<SearchView>(R.id.searchBar)
         val btnSearch: Button = findViewById(R.id.searchButton)
-        val tvStockName: TextView = findViewById(R.id.priceChange)
+        val tvStockName: TextView = findViewById(R.id.stockName)
+        val tvpriceChange: TextView = findViewById(R.id.priceChange)
         val tvPrice: TextView = findViewById(R.id.currentPrice)
         val tvPercentChange: TextView = findViewById(R.id.percentChange)
         val tvSymbol: TextView = findViewById(R.id.stockSymbol)
@@ -37,10 +38,14 @@ class MainActivity : AppCompatActivity() {
         stockViewModel.stockData.observe(this, Observer { stockData ->
             // Update UI with the stock data if available
             stockData?.let {
-                displayStockData(it, tvStockName, tvPrice, tvPercentChange, tvSymbol)
+                displayStockData(it, tvpriceChange, tvPrice, tvPercentChange, tvSymbol)
             } ?: run {
                 Toast.makeText(this, "No stock data available", Toast.LENGTH_SHORT).show()
             }
+        })
+        // Observe stock name from ViewModel
+        stockViewModel.stockName.observe(this, Observer { stockName ->
+            tvStockName.text = stockName ?: "Unknown Company"
         })
 
         // Observe error messages from the ViewModel
@@ -87,9 +92,9 @@ class MainActivity : AppCompatActivity() {
     }
 
     // UI update method to display stock data
-    private fun displayStockData(stockData: StockData, tvStockName: TextView, tvPrice: TextView, tvPercentChange: TextView, tvSymbol: TextView) {
-        tvStockName.text = "Stock Price: ${stockData.currentPrice}"
-        tvStockName.visibility = TextView.VISIBLE // Make stock price visible
+    private fun displayStockData(stockData: StockData, tvPriceChange: TextView, tvPrice: TextView, tvPercentChange: TextView, tvSymbol: TextView) {
+        tvPriceChange.text = "Stock Price: ${stockData.currentPrice}"
+        tvPriceChange.visibility = TextView.VISIBLE // Make stock price visible
         tvPrice.text = "Price Change: ${stockData.change}"
         tvPrice.visibility = TextView.VISIBLE // Make price change visible
         tvPercentChange.text = "Percent Change: ${stockData.percentChange}%"

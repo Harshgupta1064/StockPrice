@@ -102,18 +102,30 @@
         android:id="@+id/priceChange"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
         android:layout_marginTop="10dp"
         android:fontFamily="@font/alegreya"
         android:text="Price Change"
         android:textColor="@color/black"
         android:textSize="28sp"
         android:visibility="invisible"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/currentPrice"
         app:layout_constraintTop_toBottomOf="@+id/currentPrice" />
 
     <TextView
         android:id="@+id/stockSymbol"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:fontFamily="@font/alegreya"
+        android:text="Stock Name"
+        android:textColor="@color/black"
+        android:textSize="28sp"
+        android:visibility="invisible"
+        app:layout_constraintStart_toStartOf="@+id/stockName"
+        app:layout_constraintTop_toBottomOf="@+id/stockName" />
+
+    <TextView
+        android:id="@+id/stockName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="30dp"
@@ -122,7 +134,7 @@
         android:textColor="@color/black"
         android:textSize="28sp"
         android:visibility="invisible"
-        app:layout_constraintStart_toStartOf="@+id/priceChange"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/searchButton" />
 
 

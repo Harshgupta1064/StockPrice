@@ -10,4 +10,9 @@ interface AlphaVantageApiService {
         @Query("symbol") symbol: String,
         @Query("token") apiKey: String
     ): Response<StockData>
+    @GET("stock/profile2")
+    suspend fun getStockName(
+        @Query("symbol") symbol: String,
+        @Query("token") apiKey: String
+    ): Response<CompanyProfile>
 }

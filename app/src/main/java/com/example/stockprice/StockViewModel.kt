@@ -12,6 +12,9 @@ class StockViewModel : ViewModel() {
     private val _stockData = MutableLiveData<StockData?>()
     val stockData: LiveData<StockData?> = _stockData
 
+    private val _stockName = MutableLiveData<String?>() // Stock name LiveData
+    val stockName: LiveData<String?> = _stockName
+
     // LiveData to hold error messages (nullable)
     private val _errorMessage = MutableLiveData<String?>()
     val errorMessage: LiveData<String?> = _errorMessage
@@ -42,6 +45,22 @@ class StockViewModel : ViewModel() {
                 } else {
                     Log.e("StockViewModel", "Error: ${response.errorBody()?.string()}")
                     _errorMessage.postValue("Invalid symbol or no data found!") // Set error message for unsuccessful response
+                }
+                val responseProfile = RetrofitClient.retrofit.create(AlphaVantageApiService::class.java)
+                    .getStockName(symbol = symbol, apiKey = apiKey)
+
+                Log.d("StockViewModel", "Profile Response: ${responseProfile.body()}")
+
+                if (responseProfile.isSuccessful) {
+                    responseProfile.body()?.let {
+                        _stockName.postValue(it.name) // Post stock name
+                    } ?: run {
+                        Log.e("StockViewModel", "Response body is null for profile")
+                        _stockName.postValue("Unknown Company") // Fallback for unknown name
+                    }
+                } else {
+                    Log.e("StockViewModel", "Profile Error: ${responseProfile.errorBody()?.string()}")
+                    _stockName.postValue("Unknown Company")
                 }
             } catch (e: Exception) {
                 Log.e("StockViewModel", "Exception: ${e.message}")
