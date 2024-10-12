@@ -8,31 +8,45 @@ import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.launch
 
 class StockViewModel : ViewModel() {
-    private val _stockData = MutableLiveData<StockData>()
-    val stockData: LiveData<StockData> = _stockData
+    // LiveData to hold stock data (nullable)
+    private val _stockData = MutableLiveData<StockData?>()
+    val stockData: LiveData<StockData?> = _stockData
 
-    fun fetchStockData(symbol: String,apiKey: String) {
+    // LiveData to hold error messages (nullable)
+    private val _errorMessage = MutableLiveData<String?>()
+    val errorMessage: LiveData<String?> = _errorMessage
+
+    // Function to fetch stock data from the API
+    fun fetchStockData(symbol: String, apiKey: String) {
         viewModelScope.launch {
             try {
-                Log.d("Apikey", "$apiKey")
+                Log.d("ApiKey", "$apiKey") // Log the API key for debugging
+
+                // Make the API call to fetch stock data
                 val response = RetrofitClient.retrofit.create(AlphaVantageApiService::class.java)
                     .getStockData(symbol = symbol, apiKey = apiKey)
 
                 // Log the raw response for debugging
-                val rawResponse = response.raw()
+                val rawResponse = response.raw() // Get the raw response for further inspection
                 Log.d("StockViewModel", "Raw Response: ${response.body()}")
 
+                // Check if the response was successful
                 if (response.isSuccessful) {
                     response.body()?.let {
-                        _stockData.postValue(it)
-                    } ?: Log.e("StockViewModel", "Response body is null")
+                        _stockData.postValue(it) // Post the stock data to LiveData
+                        _errorMessage.postValue(null) // Clear any previous error messages
+                    } ?: run {
+                        Log.e("StockViewModel", "Response body is null")
+                        _errorMessage.postValue("Invalid symbol or no data found!") // Set error message for null body
+                    }
                 } else {
                     Log.e("StockViewModel", "Error: ${response.errorBody()?.string()}")
+                    _errorMessage.postValue("Invalid symbol or no data found!") // Set error message for unsuccessful response
                 }
             } catch (e: Exception) {
                 Log.e("StockViewModel", "Exception: ${e.message}")
+                _errorMessage.postValue("Network error, please try again!") // Set error message for network issues
             }
         }
-
     }
 }

@@ -76,51 +76,54 @@
         android:id="@+id/percentChange"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:fontFamily="@font/akaya_telivigala"
+        android:layout_marginTop="10dp"
+        android:fontFamily="@font/alegreya"
         android:text="Percentage Change"
-        android:visibility="invisible"
         android:textColor="@color/black"
         android:textSize="28sp"
-        app:layout_constraintStart_toStartOf="@+id/currentPrice"
-        app:layout_constraintTop_toBottomOf="@+id/currentPrice" />
+        android:visibility="invisible"
+        app:layout_constraintStart_toStartOf="@+id/priceChange"
+        app:layout_constraintTop_toBottomOf="@+id/priceChange" />
 
     <TextView
         android:id="@+id/currentPrice"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:fontFamily="@font/akaya_telivigala"
+        android:layout_marginTop="10dp"
+        android:fontFamily="@font/alegreya"
         android:text="Current Price"
-        android:visibility="invisible"
         android:textColor="@color/black"
         android:textSize="28sp"
+        android:visibility="invisible"
         app:layout_constraintStart_toStartOf="@+id/stockSymbol"
         app:layout_constraintTop_toBottomOf="@+id/stockSymbol" />
 
     <TextView
-        android:id="@+id/stockName"
+        android:id="@+id/priceChange"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
-        android:layout_marginTop="30dp"
-        android:fontFamily="@font/akaya_telivigala"
-        android:text="Stock Symbol"
+        android:layout_marginTop="10dp"
+        android:fontFamily="@font/alegreya"
+        android:text="Price Change"
         android:textColor="@color/black"
         android:textSize="28sp"
         android:visibility="invisible"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/searchButton" />
+        app:layout_constraintTop_toBottomOf="@+id/currentPrice" />
 
     <TextView
         android:id="@+id/stockSymbol"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:visibility="invisible"
-        android:fontFamily="@font/akaya_telivigala"
+        android:layout_marginTop="30dp"
+        android:fontFamily="@font/alegreya"
         android:text="Stock Name"
         android:textColor="@color/black"
         android:textSize="28sp"
-        app:layout_constraintStart_toStartOf="@+id/stockName"
-        app:layout_constraintTop_toBottomOf="@+id/stockName" />
+        android:visibility="invisible"
+        app:layout_constraintStart_toStartOf="@+id/priceChange"
+        app:layout_constraintTop_toBottomOf="@+id/searchButton" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -8,6 +8,6 @@ interface AlphaVantageApiService {
     @GET("quote")
     suspend fun getStockData(
         @Query("symbol") symbol: String,
-        @Query("apikey") apiKey: String
+        @Query("token") apiKey: String
     ): Response<StockData>
 }

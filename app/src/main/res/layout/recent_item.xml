@@ -24,7 +24,7 @@
             android:layout_height="match_parent">
 
             <TextView
-                android:id="@+id/stockName"
+                android:id="@+id/priceChange"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
@@ -45,8 +45,8 @@
                 android:text="Stock Price"
                 android:textColor="@color/black"
                 android:textSize="18sp"
-                app:layout_constraintStart_toStartOf="@+id/stockName"
-                app:layout_constraintTop_toBottomOf="@+id/stockName" />
+                app:layout_constraintStart_toStartOf="@+id/priceChange"
+                app:layout_constraintTop_toBottomOf="@+id/priceChange" />
 
             <TextView
                 android:id="@+id/stockSymbol"
