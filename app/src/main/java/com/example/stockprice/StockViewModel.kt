@@ -26,7 +26,7 @@ class StockViewModel : ViewModel() {
                 Log.d("ApiKey", "$apiKey") // Log the API key for debugging
 
                 // Make the API call to fetch stock data
-                val response = RetrofitClient.retrofit.create(AlphaVantageApiService::class.java)
+                val response = RetrofitClient.retrofit.create(FinhubApiInterface::class.java)
                     .getStockData(symbol = symbol, apiKey = apiKey)
 
                 // Check if the response was successful
@@ -43,7 +43,7 @@ class StockViewModel : ViewModel() {
                     _errorMessage.postValue("Invalid symbol or no data found!") // Set error message for unsuccessful response
                 }
                 // Handling for the Stock Name
-                val responseProfile = RetrofitClient.retrofit.create(AlphaVantageApiService::class.java)
+                val responseProfile = RetrofitClient.retrofit.create(FinhubApiInterface::class.java)
                     .getStockName(symbol = symbol, apiKey = apiKey)
 
                 Log.d("StockViewModel", "Profile Response: ${responseProfile.body()}")
