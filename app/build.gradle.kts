@@ -46,6 +46,7 @@ dependencies {
     implementation ("io.finnhub:kotlin-client:2.0.20")
     implementation ("com.squareup.okhttp3:okhttp:4.9.1")
     implementation ("androidx.lifecycle:lifecycle-livedata-ktx:2.3.1")
+    implementation ("com.google.android.material:material:1.6.1")
     implementation(libs.androidx.activity)
     implementation(libs.androidx.constraintlayout)
     implementation(libs.androidx.navigation.fragment.ktx)
