@@ -76,11 +76,6 @@
             <li><strong>profile2:</strong> Fetches the company details(we used it for getting company name) for a given stock symbol.</li>
         </ul>
     </div>
-  <div class="section">
-        <h2>Acknowledgments</h2>
-        <p>Thank you to <a href="https://finnhub.io/" target="_blank">Finnhub</a> for providing the stock market data API.</p>
-        <p>Special thanks to the open-source community for their support and resources.</p>
-    </div>
 
 </body>
 </html>
