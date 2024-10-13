@@ -72,27 +72,10 @@
 
   <h3>API Endpoints</h3>
         <ul>
-            <li><strong>Get Stock Price:</strong> Fetches the current price and details for a given stock symbol.</li>
+            <li><strong>quote:</strong> Fetches the current price, price change and percentage change for a given stock symbol.</li>
+            <li><strong>profile2:</strong> Fetches the company details(we used it for getting company name) for a given stock symbol.</li>
         </ul>
     </div>
-
-  <div class="section">
-        <h2>Contributing</h2>
-        <p>If you'd like to contribute to the project, please follow these steps:</p>
-        <ol>
-            <li>Fork the repository.</li>
-            <li>Create a new branch (git checkout -b feature/YourFeature).</li>
-            <li>Make your changes and commit them (git commit -m 'Add some feature').</li>
-            <li>Push to the branch (git push origin feature/YourFeature).</li>
-            <li>Open a pull request.</li>
-        </ol>
-    </div>
-
-  <div class="section">
-        <h2>License</h2>
-        <p>This project is licensed under the MIT License - see the <a href="LICENSE" target="_blank">LICENSE</a> file for details.</p>
-    </div>
-
   <div class="section">
         <h2>Acknowledgments</h2>
         <p>Thank you to <a href="https://finnhub.io/" target="_blank">Finnhub</a> for providing the stock market data API.</p>
