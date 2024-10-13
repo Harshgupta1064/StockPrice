@@ -29,10 +29,6 @@ class StockViewModel : ViewModel() {
                 val response = RetrofitClient.retrofit.create(AlphaVantageApiService::class.java)
                     .getStockData(symbol = symbol, apiKey = apiKey)
 
-                // Log the raw response for debugging
-                val rawResponse = response.raw() // Get the raw response for further inspection
-                Log.d("StockViewModel", "Raw Response: ${response.body()}")
-
                 // Check if the response was successful
                 if (response.isSuccessful) {
                     response.body()?.let {
@@ -46,6 +42,7 @@ class StockViewModel : ViewModel() {
                     Log.e("StockViewModel", "Error: ${response.errorBody()?.string()}")
                     _errorMessage.postValue("Invalid symbol or no data found!") // Set error message for unsuccessful response
                 }
+                // Handling for the Stock Name
                 val responseProfile = RetrofitClient.retrofit.create(AlphaVantageApiService::class.java)
                     .getStockName(symbol = symbol, apiKey = apiKey)
 
